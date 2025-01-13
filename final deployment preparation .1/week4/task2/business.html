@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review & Rating System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Business Review & Rating</h1>
+    </header>
+
+    <!-- Business Details Section -->
+    <section id="business-details">
+      <h2>Business: <span id="business-name">Sample Business</span></h2>
+      <p>Address: <span id="business-address">123 Main Street</span></p>
+      <p>Services: <span id="business-services">Web Development, Design</span></p>
+    </section>
+
+    <!-- Review Submission Form -->
+    <form id="review-form">
+      <h3>Submit a Review</h3>
+      <div class="form-group">
+        <label for="rating">Rating (1-5):</label>
+        <select id="rating" required>
+          <option value="" disabled selected>Select a rating</option>
+          <option value="1">1 - Poor</option>
+          <option value="2">2 - Fair</option>
+          <option value="3">3 - Good</option>
+          <option value="4">4 - Very Good</option>
+          <option value="5">5 - Excellent</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" rows="4" placeholder="Write your review here..." required></textarea>
+      </div>a
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <!-- Reviews Display Section -->
+    <section id="reviews-section">
+      <h3>Customer Reviews</h3>
+      <p>Average Rating: <span id="average-rating">N/A</span></p>
+      <ul id="reviews-list">
+        <!-- Reviews will be displayed dynamically here -->
+      </ul>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

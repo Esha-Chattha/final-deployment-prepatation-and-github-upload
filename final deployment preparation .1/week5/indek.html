@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container my-4">
+        <h3>Filter by Price Range</h3>
+        <form id="price-filter-form" class="d-flex flex-column align-items-center">
+          <div class="form-group w-100">
+            <label for="priceRange" class="form-label">Price Range: <span id="priceRangeValue">$10 - $100</span></label>
+            <input type="range" class="form-range" min="10" max="100" step="10" id="priceRange" value="100">
+          </div>
+          <button type="button" class="btn btn-primary mt-2" id="filter-button">Filter</button>
+        </form>
+      </div>
+      <div class="card mb-3 shadow-sm">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="business-image.jpg" class="img-fluid rounded-start" alt="Business Image">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Business Name</h5>
+              <p class="card-text">A brief description of the business goes here.</p>
+              <p class="card-text">
+                <small class="text-muted">Rating: ⭐⭐⭐⭐☆</small>
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Price Level: $$$</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <!-- Business Card -->
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <!-- Business Card -->
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <!-- Business Card -->
+        </div>
+      </div>
+<script>
+    document.getElementById('priceRange').addEventListener('input', function () {
+  document.getElementById('priceRangeValue').textContent = `$10 - $${this.value}`;
+});
+
+document.getElementById('filter-button').addEventListener('click', function () {
+  const maxPrice = document.getElementById('priceRange').value;
+  console.log(`Filter businesses with price up to: $${maxPrice}`);
+  // Add logic to filter business cards dynamically
+});
+
+</script>                  
+</body>
+</html>

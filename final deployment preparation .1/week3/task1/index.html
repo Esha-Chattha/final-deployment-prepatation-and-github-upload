@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance search, Filters and Deployment</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Search with Filters</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Advanced Search</h1>
+    </header>
+
+    <div class="filters">
+      <h2>Filter Options</h2>
+      <form id="filter-form">
+        <div class="filter-group">
+          <label for="location">Location</label>
+          <select id="location" name="location">
+            <option value="">All Locations</option>
+            <option value="New York">New York</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="Chicago">Canada</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="">All Categories</option>
+            <option value="Tech">Tech</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sub-category">Sub-Category</label>
+          <select id="sub-category" name="sub-category">
+            <option value="">All Sub-Categories</option>
+            <option value="DM">Digital Marketing</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="SEO">SEO</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="popularity">Popularity</label>
+          <select id="popularity" name="popularity">
+            <option value="">All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <button type="button" id="apply-filters">Apply Filters</button>
+      </form>
+    </div>
+
+    <div class="results">
+      <h2>Search Results</h2>
+      <ul id="results-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+</body>
+</html>

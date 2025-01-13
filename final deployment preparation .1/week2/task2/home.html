@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category & Sub-Category Screens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #0078D7;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        .business-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .business-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .business-card:hover {
+            transform: scale(1.05);
+        }
+        .business-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .business-card .content {
+            padding: 1rem;
+        }
+        .business-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .business-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Category: Food</h1>
+    </header>
+    <div class="container">
+        <div id="business-list" class="business-list">
+            <!-- Business cards will be populated here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // Static data for business listings
+        const businesses = [
+            {
+                name: "Joe's Pizza",
+                thumbnail: "https://megamenu.us/img/gallery/why-pizza-always-tastes-better-at-a-restaurant/intro-1670705601.jpg",
+                description: "Authentic Italian pizza made with fresh ingredients."
+            },
+            {
+                name: "Healthy Bites",
+                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQhm-T7apxOB-8SpCmxnYW_Wc12lAt8xGZdw&s",
+                description: "Delicious and nutritious meals for a healthy lifestyle."
+            },
+            {
+                name: "Seafood Delight",
+                thumbnail: "https://img.freepik.com/premium-photo/seafood-lovers-dream-come-true-as-they-indulge-freshly-caught-perfectly-cooked-platter_216520-103590.jpg",
+                description: "Fresh and flavorful seafood dishes."
+            },
+            {
+                name: "Bakery Bliss",
+                thumbnail: "https://miglutenfreegal.com/wp-content/uploads/2023/08/MIGLUTENFREEGALCOM.jpg",
+                description: "Homemade breads, pastries, and cakes."
+            }
+        ];
+
+        // Populate business cards dynamically
+        const businessList = document.getElementById('business-list');
+
+        businesses.forEach(business => {
+            const card = document.createElement('div');
+            card.className = 'business-card';
+            card.innerHTML = `
+                <img src="${business.thumbnail}" alt="${business.name} Thumbnail">
+                <div class="content">
+                    <h3>${business.name}</h3>
+                    <p>${business.description}</p>
+                </div>
+            `;
+            businessList.appendChild(card);
+        });
+    </script>
+</body>
+</html>

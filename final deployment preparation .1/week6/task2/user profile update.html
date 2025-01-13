@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container my-4">
+        <h2 class="text-center">Update Your Preferences</h2>
+      
+        <form id="preferencesForm" class="my-4">
+          <!-- Favorite Categories -->
+          <div class="mb-3">
+            <label for="favoriteCategories" class="form-label">Favorite Categories</label>
+            <select id="favoriteCategories" class="form-select" multiple>
+              <option value="tech">Technology</option>
+              <option value="fashion">Fashion</option>
+              <option value="food">Food</option>
+              <option value="travel">Travel</option>
+              <option value="fitness">Fitness</option>
+            </select>
+            <small class="text-muted">Hold Ctrl (Windows) or Command (Mac) to select multiple options.</small>
+          </div>
+      
+          <!-- Budget Range -->
+          <div class="mb-3">
+            <label for="budgetRange" class="form-label">Preferred Budget</label>
+            <input type="range" class="form-range" id="budgetRange" min="0" max="5000" step="100">
+            <p id="budgetRangeValue" class="text-muted">Budget: $0 - $5000</p>
+          </div>
+      
+          <!-- Save Button -->
+          <button type="button" class="btn btn-primary" id="savePreferences">Save Preferences</button>
+        </form>
+      </div>
+      <div class="container my-4">
+        <h2 class="text-center">Your Profile</h2>
+        <div id="userPreferences" class="mt-4">
+          <h5>Saved Preferences:</h5>
+          <ul>
+            <li><strong>Favorite Categories:</strong> <span id="displayCategories">Not set</span></li>
+            <li><strong>Budget Range:</strong> <span id="displayBudget">Not set</span></li>
+          </ul>
+        </div>
+      </div>
+<style>
+    form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form .form-label {
+  font-weight: bold;
+}
+
+#userPreferences ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#userPreferences li {
+  margin: 10px 0;
+}
+</style> 
+<script>
+    // Initialize preferences
+const userPreferences = {
+  favoriteCategories: [],
+  budget: "$0 - $5000",
+};
+
+// Handle budget range slider update
+document.getElementById("budgetRange").addEventListener("input", function () {
+  const maxBudget = this.value;
+  userPreferences.budget = `$0 - $${maxBudget}`;
+  document.getElementById("budgetRangeValue").textContent = `Budget: ${userPreferences.budget}`;
+});
+
+// Save preferences
+document.getElementById("savePreferences").addEventListener("click", () => {
+  const selectedCategories = Array.from(
+    document.getElementById("favoriteCategories").selectedOptions
+  ).map(option => option.text);
+
+  userPreferences.favoriteCategories = selectedCategories.length
+    ? selectedCategories
+    : ["None selected"];
+  
+  // Update displayed preferences
+  document.getElementById("displayCategories").textContent = userPreferences.favoriteCategories.join(", ");
+  document.getElementById("displayBudget").textContent = userPreferences.budget;
+
+  alert("Preferences saved successfully!");
+});
+
+</script>           
+</body>
+</html>

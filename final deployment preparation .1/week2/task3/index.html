@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Details</title>
+  <style>
+    /* styles.css */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .business-details {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .business-details h2 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .business-details p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .contact-info h3,
+    .services h3 {
+      color: #333;
+    }
+
+    .services ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .services li {
+      background-color: #e0e0e0;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Business Details</h1>
+    </header>
+
+    <div class="business-details">
+      <h2 id="business-name"></h2>
+      <p id="business-description"></p>
+
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p id="business-address"></p>
+        <p id="business-phone"></p>
+        <p id="business-email"></p>
+      </div>
+
+      <div class="services">
+        <h3>Services & Prices</h3>
+        <ul id="services-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Static list of businesses
+    const businesses = [
+      {
+        id: 1,
+        name: "Tech Solutions",
+        description: "Providing innovative tech solutions for businesses.",
+        address: "123 Tech St, Silicon Valley, CA",
+        phone: "(123) 456-7890",
+        email: "contact@techsolutions.com",
+        services: [
+          { name: "Website Development", price: "$500" },
+          { name: "Mobile App Development", price: "$700" },
+          { name: "IT Consulting", price: "$300" }
+        ]
+      },
+      {
+        id: 2,
+        name: "Creative Design Co.",
+        description: "Expert design and branding services.",
+        address: "456 Art Blvd, Los Angeles, CA",
+        phone: "(987) 654-3210",
+        email: "hello@creativedesignco.com",
+        services: [
+          { name: "Logo Design", price: "$250" },
+          { name: "Brand Strategy", price: "$500" },
+          { name: "Graphic Design", price: "$350" }
+        ]
+      }
+    ];
+
+    // Function to display business details
+    function loadBusinessDetails(businessId) {
+      const business = businesses.find(b => b.id === businessId);
+
+      if (business) {
+        // Display business name and description
+        document.getElementById('business-name').innerText = business.name;
+        document.getElementById('business-description').innerText = business.description;
+
+        // Display contact information
+        document.getElementById('business-address').innerText = `Address: ${business.address}`;
+        document.getElementById('business-phone').innerText = `Phone: ${business.phone}`;
+        document.getElementById('business-email').innerText = `Email: ${business.email}`;
+
+        // Display services and prices
+        const servicesList = document.getElementById('services-list');
+        servicesList.innerHTML = ''; // Clear any existing services
+        business.services.forEach(service => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `${service.name}: <strong>${service.price}</strong>`;
+          servicesList.appendChild(listItem);
+        });
+      }
+    }
+
+    // Load business details when the page is loaded (e.g., for business with ID 1)
+    window.onload = () => {
+      loadBusinessDetails(1);  // Example: Load business with ID 1
+    };
+  </script>
+</body>
+</html>

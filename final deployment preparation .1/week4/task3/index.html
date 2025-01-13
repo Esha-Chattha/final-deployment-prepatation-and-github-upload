@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Search</title>
+  <style>
+    /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+header {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+#search-section {
+  margin: 20px 0;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#results-section {
+  margin: 20px 0;
+}
+
+#results-list {
+  list-style: none;
+  padding: 0;
+}
+
+#results-list li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#results-list li strong {
+  display: block;
+  font-size: 1.2em;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Business Search</h1>
+    </header>
+
+    <!-- Search Bar -->
+    <div id="search-section">
+      <input 
+        type="text" 
+        id="search-bar" 
+        placeholder="Search by name or category..." 
+        oninput="filterBusinesses()">
+    </div>
+
+    <!-- Search Results -->
+    <section id="results-section">
+      <h2>Search Results</h2>
+      <ul id="results-list">
+        <!-- Dynamic results will be displayed here -->
+      </ul>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

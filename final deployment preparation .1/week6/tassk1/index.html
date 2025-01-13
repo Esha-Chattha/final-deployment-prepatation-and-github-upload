@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container my-4">
+        <h3>Filter Reviews</h3>
+        <form id="review-filter-form" class="d-flex flex-column flex-md-row align-items-center">
+          <label for="ratingFilter" class="form-label me-2">Show reviews with:</label>
+          <select id="ratingFilter" class="form-select w-auto">
+            <option value="all">All Ratings</option>
+            <option value="4">4 Stars and Above</option>
+            <option value="3">3 Stars and Above</option>
+            <option value="2">2 Stars and Above</option>
+            <option value="1">1 Star and Above</option>
+          </select>
+          <button type="button" class="btn btn-primary ms-md-2 mt-2 mt-md-0" id="applyFilter">Apply Filter</button>
+        </form>
+      </div>
+      <div class="container my-4">
+        <h3>Sort Reviews</h3>
+        <form id="review-sort-form" class="d-flex flex-column flex-md-row align-items-center">
+          <label for="sortReviews" class="form-label me-2">Sort by:</label>
+          <select id="sortReviews" class="form-select w-auto">
+            <option value="recent">Most Recent</option>
+            <option value="helpful">Most Helpful</option>
+          </select>
+          <button type="button" class="btn btn-secondary ms-md-2 mt-2 mt-md-0" id="applySort">Apply Sort</button>
+        </form>
+      </div>
+      <div id="reviews" class="container">
+        <div class="review-card card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">This is an amazing product!</p>
+            <p class="card-text">
+              <small class="text-muted">Rating: ⭐⭐⭐⭐⭐</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Helpful votes: 25</small>
+            </p>
+          </div>
+        </div>
+      
+        <div class="review-card card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Jane Smith</h5>
+            <p class="card-text">Good quality, but could be better.</p>
+            <p class="card-text">
+              <small class="text-muted">Rating: ⭐⭐⭐⭐☆</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Helpful votes: 15</small>
+            </p>
+          </div>
+        </div>
+      </div>
+<script>
+    // Sample data: You would replace this with data fetched from your backend.
+const reviews = [
+  { name: "John Doe", text: "This is an amazing product!", rating: 5, helpful: 25, date: "2025-01-10" },
+  { name: "Jane Smith", text: "Good quality, but could be better.", rating: 4, helpful: 15, date: "2025-01-11" },
+  { name: "Alice Brown", text: "Not bad but overpriced.", rating: 3, helpful: 8, date: "2025-01-09" },
+];
+
+function renderReviews(filteredReviews) {
+  const reviewsContainer = document.getElementById("reviews");
+  reviewsContainer.innerHTML = ""; // Clear existing reviews
+
+  filteredReviews.forEach(review => {
+    const reviewCard = `
+      <div class="review-card card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">${review.name}</h5>
+          <p class="card-text">${review.text}</p>
+          <p class="card-text">
+            <small class="text-muted">Rating: ${"⭐".repeat(review.rating)}${"☆".repeat(5 - review.rating)}</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Helpful votes: ${review.helpful}</small>
+          </p>
+        </div>
+      </div>`;
+    reviewsContainer.insertAdjacentHTML("beforeend", reviewCard);
+  });
+}
+
+// Filter Reviews
+document.getElementById("applyFilter").addEventListener("click", () => {
+  const ratingFilter = document.getElementById("ratingFilter").value;
+  const filteredReviews = ratingFilter === "all" 
+    ? reviews 
+    : reviews.filter(review => review.rating >= parseInt(ratingFilter));
+  renderReviews(filteredReviews);
+});
+
+// Sort Reviews
+document.getElementById("applySort").addEventListener("click", () => {
+  const sortOption = document.getElementById("sortReviews").value;
+  const sortedReviews = [...reviews]; // Clone the array to avoid mutating the original
+
+  if (sortOption === "recent") {
+    sortedReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+  } else if (sortOption === "helpful") {
+    sortedReviews.sort((a, b) => b.helpful - a.helpful);
+  }
+  renderReviews(sortedReviews);
+});
+
+// Initial render
+renderReviews(reviews);
+
+</script>                  
+</body>
+</html>
